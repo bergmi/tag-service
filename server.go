@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.zhaw.com/stoppdan/SCAD-HS20-Team1/P06/tag-service/controllers"
-	"github.zhaw.com/stoppdan/SCAD-HS20-Team1/P06/tag-service/models"
+	"github.com/bergmi/tag-service/controllers"
+	"github.com/bergmi/tag-service/models"
 
 	"github.com/gin-gonic/gin"
 )

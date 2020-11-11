@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.zhaw.com/stoppdan/SCAD-HS20-Team1/P06/tag-service/models"
+	"github.com/bergmi/tag-service/models"
 )
 
 type CreateTagInput struct {
