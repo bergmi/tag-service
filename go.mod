@@ -1,6 +1,6 @@
-module github.com/rahmanfadhil/gin-bookstore
+module github.com/bergmi/tag-service
 
-go 1.14
+go 1.15
 
 require (
 	github.com/gin-gonic/gin v1.6.3

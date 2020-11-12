@@ -17,7 +17,6 @@ func main() {
 	r.GET("/tags", controllers.FindTags)
 	r.GET("/tags/:postId", controllers.FindTagsForPost)
 	r.POST("/tags", controllers.CreateTag)
-	r.DELETE("/tags/:id", controllers.DeleteT)
 
 	// Run the server
 	r.Run()

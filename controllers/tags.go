@@ -9,12 +9,12 @@ import (
 
 type CreateTagInput struct {
 	Name    string `json:"name" binding:"required"`
-	PostId 	int    `json:"postId" binding:"required"`
+	Post 	  uint   `json:"post" binding:"required"`
 }
 
 type UpdateTagInput struct {
 	Name    string `json:"name"`
-	PostId 	uint   `json:"postId"`
+	Post 	  uint   `json:"post"`
 }
 
 // GET /tags
@@ -30,13 +30,13 @@ func FindTags(c *gin.Context) {
 // Find a tag
 func FindTagsForPost(c *gin.Context) {
 	// Get model if exist
-	var tag models.Tag
-	if err := models.DB.Where("postId = ?", c.Param("postId")).First(&tag).Error; err != nil {
+	var tags []models.Tag
+	if err := models.DB.Where("post = ?", c.Param("postId")).Find(&tags).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"data": tag})
+	c.JSON(http.StatusOK, gin.H{"data": tags})
 }
 
 // POST /tags
@@ -50,38 +50,8 @@ func CreateTag(c *gin.Context) {
 	}
 
 	// Create 5qt
-	tag := models.Tag{Name: input.Name, PostId: input.PostId}
+	tag := models.Tag{Name: input.Name, Post: input.Post}
 	models.DB.Create(&tag)
 
 	c.JSON(http.StatusOK, gin.H{"data": tag})
-}
-
-// DELETE /tags/:id
-// Delete a tag
-func DeleteTag(c *gin.Context) {
-	// Get model if exist
-	var tag models.Tag
-	if err := models.DB.Where("id = ?", c.Param("id")).First(&tag).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
-		return
-	}
-
-	models.DB.Delete(&tag)
-
-	c.JSON(http.StatusOK, gin.H{"data": true})
-}
-
-// DELETE /tags/:postId
-// Delete a tag for postId
-func DeleteTagForPostId(c *gin.Context) {
-	// Get model if exist
-	var tag models.Tag
-	if err := models.DB.Where("postId = ?", c.Param("postId")).First(&tag).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
-		return
-	}
-
-	models.DB.Delete(&tag)
-
-	c.JSON(http.StatusOK, gin.H{"data": true})
 }
