@@ -11,8 +11,8 @@ import (
 
 // init gets called before the main function
 func init() {
-		gin.SetMode(gin.ReleaseMode)
-		os.Setenv("PORT", "3000")
+	gin.SetMode(gin.ReleaseMode)
+	os.Setenv("PORT", "3000")
 }
 
 func main() {
