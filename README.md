@@ -1,9 +1,11 @@
-# Bookstore REST API using Gin and Gorm
+## get started
 
-Read the [article](https://blog.logrocket.com/how-to-build-a-rest-api-with-golang-using-gin-and-gorm/).
-
-How to use:
+run the following commands:
 
 ```
-$ go run main.go
+docker build -t go-docker-tag-service .
+..
+docker run --rm -it -p 8080:8080 go-tag-service
+..
 ```
+
