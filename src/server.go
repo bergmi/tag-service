@@ -1,24 +1,18 @@
 package main
 
 import (
-	"log"
+	"os"
 
 	"github.com/bergmi/tag-service/controllers"
 	"github.com/bergmi/tag-service/models"
 
 	"github.com/gin-gonic/gin"
-	// Import godotenv for .env variables
-	"github.com/joho/godotenv"
 )
 
 // init gets called before the main function
 func init() {
-    // Log error if .env file does not exist
-    if err := godotenv.Load(); err != nil {
-        log.Printf("No .env file found")
-    }
-
 		gin.SetMode(gin.ReleaseMode)
+		os.Setenv("PORT", "3000")
 }
 
 func main() {
